@@ -1,0 +1,25 @@
+Section 16 - Todoey App - Flutter State Management
+Needs Todoey Mockup.pdf for Design and Colors
+
+1. L-183: Designing the To-Do List App
+1.1 create new project and delete eveything but void main in main.dart
+1.2 add stless widget MyApp, replace Container with MaterialApp (home: TaskScreen()
+1.3 create new folder screens in lib and add task_screen.dart
+1.4 in task_screen - import material.dart
+1.5 create new stless TasksScreen
+1.6 import task_screen in main.dart
+1.7 in task_screen - replace Container() with Scaffold(bgcolor lightblue, body: Column())
+1.8 Column wrapped in Container (for Padding) needs icon.list, Text(Todoey)
+1.9 wrap Icon in CircleAvatar
+1.10 add SizedBox as "padding"
+1.11 add TextStyle to Text
+1.12 CrossAxisAlignment of column left (start)
+1.13 add Text() for # tasks
+1.14 add Container() - use BoxDecoration to manipulate props of box
+1.15 wrap container in Expanded()
+1.16 to free the Container() of padding: nest Column() (with padding) on new Column() without padding and put Container in there
+    1.16(a) cut Expanded out
+    1.16(b) wrap topmost container in new Column()
+    1.16(c) paste Expanded below Container()
+    1.16(d) align to left in new Column() with CrossAxisAlignment.start
+1.17 add FloatingActionButton to Scaffold
