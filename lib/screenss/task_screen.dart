@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart'; // 1.4
+import 'package:todoey_flutter/widgets/tasks_list.dart';
 
 class TasksScreen extends StatelessWidget {
   @override
@@ -10,6 +11,10 @@ class TasksScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.lightBlueAccent,
         child: Icon(Icons.add),
+        // 2.8
+        onPressed: () {
+          // TODO: add logic to display ADD TASK Container
+        },
       ),
       // 1.16(b)
       body: Column(
@@ -56,10 +61,13 @@ class TasksScreen extends StatelessWidget {
           Expanded(
             // 1.14 - Container for tasks
             child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 20.0), // 2.3
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0)),
               ),
+              //2.1 & 2.4
+              child: TasksList(),
             ),
           ),
         ],

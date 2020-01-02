@@ -23,3 +23,13 @@ Needs Todoey Mockup.pdf for Design and Colors
     1.16(c) paste Expanded below Container()
     1.16(d) align to left in new Column() with CrossAxisAlignment.start
 1.17 add FloatingActionButton to Scaffold
+
+2. L-184: The ListView Challenge:
+2.1 add ListView as child to bottom Container
+2.2 add ListTiles as children
+2.3 add symmetric 20px padding to container to line up
+2.4 extract widget ListView as TasksList
+2.5 extract widget ListTitle as TaskTile from TasksList (delete the other)
+2.6 delete all constructors, delete any ListTile remaining in TasksList, add 2 more TaskTiles
+2.7 create folder widgets (components), add tasks_list.dart & task_tile.dart and move TaskList & TaskTile there and add import material, add import statements to tasks_list & task_screen
+2.8 add onPressed() to FloatingActionButton to add task
