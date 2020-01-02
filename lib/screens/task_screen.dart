@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart'; // 1.4
 import 'package:todoey_flutter/widgets/tasks_list.dart';
+import 'package:todoey_flutter/screens/add_task_screen.dart';
 
 class TasksScreen extends StatelessWidget {
+  /* no longer needed as of 3.3
+  // 3.1
+  Widget buildBottomSheet(BuildContext context) => Container(
+        child: Center(child: Text('This is a bottom sheet')),
+      );
+   */
   @override
   Widget build(BuildContext context) {
     // 1.7:
@@ -13,7 +20,7 @@ class TasksScreen extends StatelessWidget {
         child: Icon(Icons.add),
         // 2.8
         onPressed: () {
-          // TODO: add logic to display ADD TASK Container
+          showModalBottomSheet(context: context, builder: (context) => AddTaskScreen()); // 3.2, 3.3, 3.5 & 3.7
         },
       ),
       // 1.16(b)

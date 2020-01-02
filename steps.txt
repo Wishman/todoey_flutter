@@ -33,3 +33,18 @@ Needs Todoey Mockup.pdf for Design and Colors
 2.6 delete all constructors, delete any ListTile remaining in TasksList, add 2 more TaskTiles
 2.7 create folder widgets (components), add tasks_list.dart & task_tile.dart and move TaskList & TaskTile there and add import material, add import statements to tasks_list & task_screen
 2.8 add onPressed() to FloatingActionButton to add task
+
+3. L-185: The BottomSheet Widget
+3.1 create builder function buildBottomSheet() for ModalBottomSheet in TaskScreen (at the moment only re-run a  Container( with centered demo Text) as arrow func
+3.2 add showModalBottomSheet() to onPressed of FAB
+3.3 replace builder with anon func and delete buildBottomSheet
+3.4 in screens folder add add_tasks_screen.dart
+3.5 create stless AddTaskScreen()
+3.6 change bgColor of AddTaskScreen Container to match background grey and add second container with rounded corners
+3.7 replace Container() in onPressed of FAB with AddTaskScreen()
+3.8 add children to bottomSheet:
+    3.8(a) Text() with 'Add Task', textAlign: center
+    3.8(b) TextField that automatically has focus and shows keyboard (autofocus: true)
+    3.8(c) FlatButton 'Add' (needs onPressed to show color!! otherwise disabled!)
+3.9 add CrossAxisAlignment.stretch to Column()
+3.10 add Padding() to Container() = around Column()
