@@ -48,3 +48,19 @@ Needs Todoey Mockup.pdf for Design and Colors
     3.8(c) FlatButton 'Add' (needs onPressed to show color!! otherwise disabled!)
 3.9 add CrossAxisAlignment.stretch to Column()
 3.10 add Padding() to Container() = around Column()
+
+4. L-186: What is State and How do we Manage it?
+4.1 in task_tile.dart - change color of Checkbox to lightBlueAccent
+4.2 extract checkbox as separate widget TaskCheckBox(), delete constr, convert to stateful widget (left click & alt + Enter)
+4.3 add onChanged prop with value change logic (also add bool isChecked on top) inside setState() !!!
+4.4 move isChecked from STATE class to TaskTile class & convert TaskTile to Stateful Widget
+4.5 change TaskCheckbox to STATELESS widget (no longer needed to keep state, will be build anew every time) (delete constr)
+4.6 add final bool checkboxState to TaskCheckbox(), add constr, replace isChecked with checkboxState in TaskCheckbox(), delete setState()
+4.7 add isChecked to TaskCheckbox call
+4.8 add TextStyle to Text widget: if isChecked is true, strikethrough, else null (no decoration)
+4.9 create callback with new func checkboxCallback (with bool checkboxState param)
+4.10 use checkboxCallback() in onChanged of TaskCheckbox class
+    4.10(a) add final Function toggleCheckboxState to handle func handover and add to constr
+    4.10(b) create onChanged on Widget build Checkbox calling and use toggleCheckboxState
+    4.10(c) add checkboxCallback call to trailing: TaskCheckbox in TaskTileState
+    4.10(d) replace checkboxCallback as anon func in toggleCheckboxState:
