@@ -64,3 +64,27 @@ Needs Todoey Mockup.pdf for Design and Colors
     4.10(b) create onChanged on Widget build Checkbox calling and use toggleCheckboxState
     4.10(c) add checkboxCallback call to trailing: TaskCheckbox in TaskTileState
     4.10(d) replace checkboxCallback as anon func in toggleCheckboxState:
+
+5. L-188: The ListViewBuilder
+Task: add logic to add new task to ListView when ADD button ist pressed on add_task_screen:
+- make TasksList dynamic:
+5.1 in task_list.dart -> convert TasksList to stateFUL widget
+5.2 add var list of Tasks tasks
+5.3 create models folder in lib and create task.dart inside model folder
+5.4 create Task class in task.dart (default value for isDone = false)
+5.5 in Task create func toggleDone that sets value of isDone to opposite
+5.6 in tasks_list - for now: add 3 manual Tasks to List<Task>
+-- make task_tile simpler (both ListTile and Checkbox become Stateless -> merge):
+5.7 delete call to state and make TaskTile stateless
+5.8 add final to bool isChecked and remove setState()from toggleCheckboxState
+5.9 bring Checkbox Widget back up into Tasktile trailin
+5.10 replace checkboxState in value: with isChecked
+5.11 add tasktitle final String and replace as text in Text() and remove default value for isChecked
+5.12 add constr for TaskTile
+5.13 -- in TaskList: replace ListView with ListView.builder to make it dynamic <- !!
+5.14 -- in task_tile: add callback from TaskTile to List<Task> to provide info
+    5.14(a) -- in tasks_list: add property checkboxCallback with anon func that  toggles State for checkBox
+    5.14(b) -- in task_tile: add checkboxCallback Function prop to TaskTile definition & in constr
+    5.14(c) add onChanged logic: use checkboxCallback
+
+
