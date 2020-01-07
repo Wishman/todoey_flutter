@@ -87,4 +87,24 @@ Task: add logic to add new task to ListView when ADD button ist pressed on add_t
     5.14(b) -- in task_tile: add checkboxCallback Function prop to TaskTile definition & in constr
     5.14(c) add onChanged logic: use checkboxCallback
 
+6. L-189: Lifting State Up Challenge - Add Button Functionality
+Task: add task to TaskList when add button is pressed -> bring state up to TasksScreen
+6.1 lift state of List<Task> up to TasksScreen = move it there
+6.2 switch TasksScreen to stateFUL widget
+6.3 enable TasksList to receive tasks
+    6.3(a) in task_list: create final List<Task> tasks in TaskList class, not _TasksListState!
+    6.3(b) add constr (TaskList() not _TaskListState() !)
+    6.3(c) use widget.tasks to access them in TaskTile
+    6.3(d) in tasks_screen: add tasks to TaskTile()
+6.4 in add_tasks_screen handle new text in TextField
+    6.4(a) add var newTaskTitle to build dunc of state !!!
+    6.4(b) in TextTile add onChanged with callback to newTaskTitle
+6.5 pass over newTaskTitle from add_task_screen to TaskList when "Add" Button is pressed
+    6.5(a) in add_task_screen add final Func addTaskCallback + constr
+    6.5(b) use addTaskCallback in onPressed of FlatButton
+    6.5(c) in tasks_screen add newTaskTitle to AddTaskScreen() and add to TasksList inside setState()
+6.6 Dismiss BottomSheet() with Navigator.pop()
+6.7 change hardcoded '12 tasks' into dynamic calc of number of tasks
+
+7. L-190:
 

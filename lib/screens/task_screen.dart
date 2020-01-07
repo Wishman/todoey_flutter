@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart'; // 1.4
 import 'package:todoey_flutter/widgets/tasks_list.dart';
 import 'package:todoey_flutter/screens/add_task_screen.dart';
+import 'package:todoey_flutter/models/task.dart';
 
-class TasksScreen extends StatelessWidget {
-  /* no longer needed as of 3.3
-  // 3.1
-  Widget buildBottomSheet(BuildContext context) => Container(
-        child: Center(child: Text('This is a bottom sheet')),
-      );
-   */
+// 6.2
+class TasksScreen extends StatefulWidget {
+  @override
+  _TasksScreenState createState() => _TasksScreenState();
+}
+
+class _TasksScreenState extends State<TasksScreen> {
+  // 5.2 & 6.1
+  List<Task> tasks = [
+    // 5.6 temp:
+    Task(name: 'Buy milk'),
+    Task(name: 'Buy eggs'),
+    Task(name: 'Buy bread'),
+  ];
+
   @override
   Widget build(BuildContext context) {
     // 1.7:
@@ -20,7 +29,14 @@ class TasksScreen extends StatelessWidget {
         child: Icon(Icons.add),
         // 2.8
         onPressed: () {
-          showModalBottomSheet(context: context, builder: (context) => AddTaskScreen()); // 3.2, 3.3, 3.5 & 3.7
+          showModalBottomSheet(
+              context: context,
+              builder: (context) => AddTaskScreen((newTaskTitle) {
+                    setState(() {
+                      tasks.add(Task(name: newTaskTitle)); //6.5(c)
+                    });
+                    Navigator.pop(context); // 6.6
+                  })); // 3.2, 3.3, 3.5 , 3.7
         },
       ),
       // 1.16(b)
@@ -55,7 +71,7 @@ class TasksScreen extends StatelessWidget {
                 ),
                 // 1.13
                 Text(
-                  '12 tasks',
+                  '${tasks.length} Tasks', // 6.7
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18.0,
@@ -74,7 +90,7 @@ class TasksScreen extends StatelessWidget {
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0)),
               ),
               //2.1 & 2.4
-              child: TasksList(),
+              child: TasksList(tasks), // 6.3(d)
             ),
           ),
         ],

@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 
 //3.4
 class AddTaskScreen extends StatelessWidget {
+  // 6.5(a):
+  final Function addTaskCallback;
+  AddTaskScreen(this.addTaskCallback);
+
   @override
   Widget build(BuildContext context) {
+    String newTaskTitle; //6.4(a)
     return Container(
       // 3.6
       color: Color(0xFF757575),
@@ -30,13 +35,19 @@ class AddTaskScreen extends StatelessWidget {
             TextField(
               autofocus: true, // focus field and show keyboard
               textAlign: TextAlign.center,
+              // 6.4(b)
+              onChanged: (newText) {
+                newTaskTitle = newText;
+              },
             ),
             // 3.8(c)
             FlatButton(
               color: Colors.lightBlueAccent,
               textColor: Colors.white,
               splashColor: Colors.blue,
-              onPressed: () {}, // need onPressed for color to show!!!
+              onPressed: () {
+                addTaskCallback(newTaskTitle); // 6.5(b)
+              }, // need empty onPressed for color to show in emulator!!!
               child: Text(
                 'Add',
                 style: TextStyle(
