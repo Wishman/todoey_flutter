@@ -106,5 +106,34 @@ Task: add task to TaskList when add button is pressed -> bring state up to Tasks
 6.6 Dismiss BottomSheet() with Navigator.pop()
 6.7 change hardcoded '12 tasks' into dynamic calc of number of tasks
 
-7. L-190:
+7. L-192: Using a Provider and Change Notifier to Manage State:
+Task: get tasks from add to task screen (for # tasks) and add to tasklist using provider pattern
+7.1 add provider pattern 3.x (not 4.x as too much has changed)
+7.2 create new file in models folder task_data.dart
+7.3 add TaskData class that extends ChangeNotifier class (needs foundation.dart)
+    7.3(a) import task.dart
+    7.3(b) cut&paste List<Task> tasks from task_screen and into TestData
+7.4 in main.dart:
+    7.4 (a) wrap MaterialApp in ChangeNotifierProvider class (import provider.dart) - has to be high enough in tree to be seen by all others who need it - in this example - on top of the tree
+    7.4 (b) add create: with ref to TaskData() (import taskdata)
+7.5 in task_screen:
+    7.5(a) import provider.dart & task_data.dart
+    7.5(b) replace tasks.length with Provider.of tasks.length in 2nd Text widget
+    7.5(c) comment out setState in AddTaskScreen for the moment
+    7.5(d) --in task_list: delete final List<Task> tasks and Contstr (6.3 a&b) delete import task.dart
+    7.5(e) add provider.dart and task_data.dart
+    7.5(f) replace widget.tasks with Provider.of ref to tasks and comment out setState()
+    7.5(g) delete tasks from TasksList call in Expanded Widget
+7.6 in task_list.dart - convert TasksList to StateLESS widget
+7.7 in task_screen.dart - convert TasksScrenn to stateLESS widget
+7.8 in tasks_list: simplify by wrapping highest Point where PRovider.of is uses (here ListView.builder as itemCount also uses provider) in a Consumer widget - the taskData in builder is equivalent to PRovider.of<TaskData>(context)
+7.9 replace Provider.of with taskData
+7.10 simplify task.length by adding taskCount getter to task_data
+    7.10(a) add getter to TaskData in task_data
+    7.10(b) in tasks_screen replace tasks.length with taskCount
+    7.10(c) in task_list replace tasks.length with taskCount
+
+
+
+
 
