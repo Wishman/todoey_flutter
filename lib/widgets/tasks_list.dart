@@ -42,6 +42,10 @@ class TasksList extends StatelessWidget {
                 //taskData.updateTask(taskData.tasks[index]); // 9.3 obso per 9.4
                 taskData.updateTask(task); // 9.4
               },
+              // 10.3
+              longPressCallback: () {
+                taskData.deleteTask(task);
+              },
             );
           },
           //itemCount: widget.tasks.length);  // obso per 7.5(f)

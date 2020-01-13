@@ -32,4 +32,10 @@ class TaskData extends ChangeNotifier {
     task.toggleDone();
     notifyListeners(); // to update widgets that are listening!
   }
+
+  // 10.2
+  void deleteTask(Task task) {
+    _tasks.remove(task);
+    notifyListeners();
+  }
 }

@@ -151,6 +151,14 @@ TaskTile should remain simple stateless widget - in task-list setState is no lon
 9.3 in task_list: in checkboxCallback call updateTask
 9.4 refactor taskData.tasks[index] into task var
 
+10. L-195: Deleting Tasks using the Provider Design pattern
+Task: delete a task when long-pushed
+10.1 in task_tile:
+    10.1(a) add new Function longPressCallback & constr
+    10.1(b) add prop onLongPress: to ListTile with longPressCallback
+10.2 in task_data create deleteTask method
+10.3 in task_list add longPressCallback and trigger call to delete method
+
 
 
 
