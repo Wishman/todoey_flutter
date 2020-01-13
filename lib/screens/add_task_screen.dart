@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:todoey_flutter/models/task.dart'; //8.3
+import 'package:provider/provider.dart'; //8.5(a)
+import 'package:todoey_flutter/models/task_data.dart'; //8.5(a)
 
-//3.4
 class AddTaskScreen extends StatelessWidget {
+  /* obso with 8.2
   // 6.5(a):
   final Function addTaskCallback;
   AddTaskScreen(this.addTaskCallback);
+   */
 
   @override
   Widget build(BuildContext context) {
@@ -42,18 +46,23 @@ class AddTaskScreen extends StatelessWidget {
             ),
             // 3.8(c)
             FlatButton(
-              color: Colors.lightBlueAccent,
-              textColor: Colors.white,
-              splashColor: Colors.blue,
-              onPressed: () {
-                addTaskCallback(newTaskTitle); // 6.5(b)
-              }, // need empty onPressed for color to show in emulator!!!
               child: Text(
                 'Add',
                 style: TextStyle(
+                  color: Colors.white,
                   fontSize: 20.0,
                 ),
               ),
+              color: Colors.lightBlueAccent,
+              splashColor: Colors.blue,
+              onPressed: () {
+                /* obso with 8.2
+                addTaskCallback(newTaskTitle); // 6.5(b)
+                 */
+                //final task = Task(name: newTaskTitle); //8.3 obso with 8.5
+                Provider.of<TaskData>(context).addTask(newTaskTitle); // 8.5(b)
+                Navigator.pop(context);
+              }, // need empty onPressed for color to show in emulator!!!
             ),
           ],
         ),

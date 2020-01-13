@@ -125,13 +125,25 @@ Task: get tasks from add to task screen (for # tasks) and add to tasklist using 
     7.5(f) replace widget.tasks with Provider.of ref to tasks and comment out setState()
     7.5(g) delete tasks from TasksList call in Expanded Widget
 7.6 in task_list.dart - convert TasksList to StateLESS widget
-7.7 in task_screen.dart - convert TasksScrenn to stateLESS widget
-7.8 in tasks_list: simplify by wrapping highest Point where PRovider.of is uses (here ListView.builder as itemCount also uses provider) in a Consumer widget - the taskData in builder is equivalent to PRovider.of<TaskData>(context)
+7.7 in task_screen.dart - convert TasksScreen to stateLESS widget
+7.8 in tasks_list: simplify by wrapping highest Point where PRovider.of is uses (here ListView.builder as itemCount also uses provider) in a Consumer widget - the taskData in builder is equivalent to Provider.of<TaskData>(context)
 7.9 replace Provider.of with taskData
 7.10 simplify task.length by adding taskCount getter to task_data
     7.10(a) add getter to TaskData in task_data
     7.10(b) in tasks_screen replace tasks.length with taskCount
     7.10(c) in task_list replace tasks.length with taskCount
+
+8. L-193: Adding New To-do List Tasks (using provider)
+8.1 in tasks_screen: delete callback to AddTaskScreen
+8.2 in add_task_screen: delete call to Callback in FlatButton onPressed: and the props on top
+8.3 add task assignment to onPressed: import task.dart assign new Task to local var
+8.4 in task_data: in order for update to work across widget tree, TaskData needs method addTask that calls NotifyListener
+8.5 in add_task_screen:
+    8.5(a) import provider & task_data
+    8.5(b) in onPressed: for FlatButton: call addTask via Provider.of and pop Navigator
+8.6 in task_data, make List<Task> tasks private
+8.7 create getter for _tasks with UnmodifiableListView (is a view of a list) - import collections
+
 
 
 

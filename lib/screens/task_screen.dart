@@ -27,14 +27,15 @@ class _TasksScreenState extends State<TasksScreen> {
         // 2.8
         onPressed: () {
           showModalBottomSheet(
-              context: context,
-              builder: (context) => AddTaskScreen((newTaskTitle) {
-                    // 7.5(c)
+            context: context,
+            builder: (context) => AddTaskScreen(), //8.1
+            // obsolete with 8.1
+            // 7.5(c)
 //                    setState(() {
 //                      tasks.add(Task(name: newTaskTitle)); //6.5(c)
 //                    });
-                    Navigator.pop(context); // 6.6
-                  })); // 3.2, 3.3, 3.5 , 3.7
+            //Navigator.pop(context); // 6.6
+          ); // 3.2, 3.3, 3.5 , 3.7
         },
       ),
       // 1.16(b)
