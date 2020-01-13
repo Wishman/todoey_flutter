@@ -26,4 +26,10 @@ class TaskData extends ChangeNotifier {
     _tasks.add(Task(name: newTaskTitle));
     notifyListeners(); // <- must be called here !
   }
+
+  // 9.2
+  void updateTask(Task task) {
+    task.toggleDone();
+    notifyListeners(); // to update widgets that are listening!
+  }
 }

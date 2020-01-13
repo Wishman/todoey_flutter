@@ -24,18 +24,23 @@ class TasksList extends StatelessWidget {
       builder: (context, taskData, child) {
         return ListView.builder(
           itemBuilder: (context, index) {
+            final task = taskData.tasks[index]; // 9.4
             return TaskTile(
               //taskTitle: widget.tasks[index].name,  //obsolete per 7.5(f)
               //isChecked: widget.tasks[index].isDone,  // obsolete per 7.5(f)
               //taskTitle: Provider.of<TaskData>(context).tasks[index].name, // 7.5(f) obso per 7.9
               //isChecked: Provider.of<TaskData>(context).tasks[index].isDone, // 7.5(f), obso per 7.9
-              taskTitle: taskData.tasks[index].name, // 7.9
-              isChecked: taskData.tasks[index].isDone, //7.9
+              //taskTitle: taskData.tasks[index].name, // 7.9 obso per 9.4
+              //isChecked: taskData.tasks[index].isDone, //7.9 obso per 9.4
+              taskTitle: task.name, //9.4
+              isChecked: task.isDone, //9.4
               // 5.14(a):
               checkboxCallback: (checkboxState) {
-                //setState(() {
+                //setState(() { // obso per 9.1
                 //widget.tasks[index].toggleDone(); // obso per 7.5(f)
                 //});
+                //taskData.updateTask(taskData.tasks[index]); // 9.3 obso per 9.4
+                taskData.updateTask(task); // 9.4
               },
             );
           },

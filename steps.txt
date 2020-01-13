@@ -144,6 +144,13 @@ Task: get tasks from add to task screen (for # tasks) and add to tasklist using 
 8.6 in task_data, make List<Task> tasks private
 8.7 create getter for _tasks with UnmodifiableListView (is a view of a list) - import collections
 
+9. L-194: Checking off To-Do List Tasks
+TaskTile should remain simple stateless widget - in task-list setState is no longer possible as the tasklist ist stateless
+9.1 delete setState() from task-list
+9.2 in task_data: create  updateTask method to perform an update to checkbox (task.toggleDone) with notifyListeners()
+9.3 in task_list: in checkboxCallback call updateTask
+9.4 refactor taskData.tasks[index] into task var
+
 
 
 
